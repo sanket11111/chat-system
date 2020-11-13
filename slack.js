@@ -5,9 +5,11 @@ const socketio = require('socket.io')
 const namespaces = require('./data/namespaces')
 // console.log(namespaces[0])
 
+const port = process.env.PORT || 9000
+
 app.use(express.static(__dirname + '/public'))
 
-const expressServer = app.listen(9000, console.log('connected to loalhost:9000'))  
+const expressServer = app.listen(port, console.log('connected to loalhost:', port))  
 
 const io = socketio(expressServer) 
 
