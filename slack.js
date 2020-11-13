@@ -1,6 +1,7 @@
 const express = require('express')
 const app =express()
 const socketio = require('socket.io')
+const path = require('path')
 
 const namespaces = require('./data/namespaces')
 // console.log(namespaces[0])
@@ -8,6 +9,10 @@ const namespaces = require('./data/namespaces')
 const port = process.env.PORT || 9000
 
 app.use(express.static(__dirname + '/public'))
+
+app.get('/', (req, res, next) => {
+    res.sendFile(path.join(__dirname,'./public', 'chat.html'))
+})
 
 const expressServer = app.listen(port, console.log('connected to loalhost:', port))  
 
